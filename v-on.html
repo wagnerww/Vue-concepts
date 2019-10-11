@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>V-ON</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <a href="/">Voltar</a>
+
+      <div>
+        <p>v-on: Linkar eventos especificos com algum método/função nosso.</p>
+        <p>
+          IMPORTANTE: A abreviação e é o que é mais utilizado é o @. Exemplo:
+          @click
+        </p>
+        <p>
+          this: O this nos methos é utilizado para referenciar tudo que esta
+          dentro do dada()
+        </p>
+        <div>
+          <input type="text" v-model="text" />
+          <button @click="save">vai v-on</button>
+          <p>{{ savedText }}</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            text: "",
+            savedText: ""
+          };
+        },
+        methods: {
+          save() {
+            this.savedText = this.text;
+            this.text = "";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

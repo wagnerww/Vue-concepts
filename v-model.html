@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>V-MODEL</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <a href="/">Voltar</a>
+
+      <div>
+        <p>
+          v-model: vincula valores no html com nosso js, ou seja, two-way
+          data-bind, ou seja, tudo que é alterado no html é refletido no js e
+          assim vice-versa.
+        </p>
+
+        <div>
+          <input type="text" v-model="text" />
+          <p>{{ text }}</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            text: ""
+          };
+        }
+      });
+    </script>
+  </body>
+</html>

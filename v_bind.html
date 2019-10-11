@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>V-Bind</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <a href="/">Voltar</a>
+      <div>
+        <p>
+          b-bind: Pega a variável title e injeta um valor em algum lugar, ela
+          fica escutando, se a variável for alterada, ele vai autalizar o valor
+          automaticamente.
+        </p>
+        <p>
+          IMPORTANTE: A abrevianção e é esta sendo mais utilizado é :atributo
+          exemplo= :title
+        </p>
+        <span v-bind:title="title">
+          {{ message }}
+        </span>
+      </div>
+    </div>
+
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            message: "Hello World!",
+            title: "olha o v-bind"
+          };
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>V-FOR</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <a href="/">Voltar</a>
+
+      <div>
+        <p>
+          v-for: Simula um for normal. Toda vez que se faz um for é necessário
+          criar uma key no lemento através do v-bind.
+        </p>
+        <p v-for="(message, index) in messageList" v-bind:key="message">
+          {{ message }} - {{ index }}
+        </p>
+      </div>
+    </div>
+
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            messageList: ["Mensagem 01", "Mensagem 02", "Mensagem 03"]
+          };
+        }
+      });
+    </script>
+  </body>
+</html>
