@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Computed</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <a href="/">Voltar</a>
+
+      <p>
+        Computed: São varáveis computadas, são variáveis que vão ter seus
+        valores alterados de acordo com as dependecias dela. A diferença é que o
+        computed é uma função que sempre espera um retorno. Se fosse fazer via
+        method, teria que fazer: nomefuncao() e com o computed isso já é
+        injetado automáticamente
+      </p>
+
+      <div>
+        <my-Form></my-Form>
+      </div>
+    </div>
+
+    <script>
+      const myForm = Vue.component("MyForm", {
+        template: `<div>
+            <input type="text" v-model="text" />
+            <button @click="clear">Limpar</button>
+            <p>{{ reverseText }}</p>
+          </div>
+        `,
+        data() {
+          return {
+            text: ""
+          };
+        },
+        computed: {
+          reverseText() {
+            return this.text
+              .split("")
+              .reverse()
+              .join("");
+          }
+        },
+        methods: {
+          clear() {
+            this.text = "";
+          }
+        }
+      });
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {};
+        }
+      });
+    </script>
+  </body>
+</html>

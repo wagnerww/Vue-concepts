@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>V-ON</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <a href="/">Voltar</a>
+
+      <p>
+        Component: O component é nomeado de forma PascalCase(MyForm), mas para
+        ser renderizado no html ;e necessário utilizar a forma Kebab
+        Case(my-form)
+      </p>
+
+      <div>
+        <my-Form></my-Form>
+      </div>
+    </div>
+
+    <script>
+      const myForm = Vue.component("MyForm", {
+        template: `<div>
+            <input type="text" v-model="text" />
+            <button @click="clear">Limpar</button>
+          </div>
+        `,
+        data() {
+          return {
+            text: ""
+          };
+        },
+        methods: {
+          clear() {
+            this.text = "";
+          }
+        }
+      });
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {};
+        }
+      });
+    </script>
+  </body>
+</html>
