@@ -1,4 +1,4 @@
-# Vue-concepts![alt text](https://cdn.iconscout.com/icon/free/png-256/vuejs-1175052.png)
+# Vue-concepts![alt text](https://images.opencollective.com/vuejs/25a8146/logo.png)
 
 Repositório com os conceitos básicos do Vue.js
 
