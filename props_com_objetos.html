@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Componentes Multiplos</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <a href="/">Voltar</a>
+
+      <p>
+        Props como objetos: é possível tipar as entradas e dizer se são ou não obrigatórias. Exemplos no código comentado.
+      </p>
+
+       <div>
+        <my-Form v-for="field in fieldList" :key="field" :label="field"/>
+      </div>
+    </div>
+
+    <script>
+      const myForm = Vue.component("MyForm", {
+        template: `<div>
+            <span>{{label}}</span>
+            <input type="text" v-model="text" />
+            <button @click="clear">Limpar</button>
+            <p>{{ reverseText }}</p>
+          </div>
+        `,
+        props:{
+          //label:String - BOM
+          label:{type:String, required:true}, //MELHOR,
+          //label2:{type:String, default:''}
+          //propMultiple:{type:[String, Number], required:true} // Cuida para não usar muitos types
+
+        },
+        data() {
+          return {
+            text: ""
+          };
+        },
+        computed: {
+          reverseText() {
+            return this.text
+              .split("")
+              .reverse()
+              .join("");
+          }
+        },
+        methods: {
+          clear() {
+            this.text = "";
+          }
+        }
+      });
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            fieldList: ["Nome", "Email", "Telefone"]
+          };
+        }
+      });
+    </script>
+  </body>
+</html>
