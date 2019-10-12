@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Componentes Multiplos</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <a href="/">Voltar</a>
+
+      <p>
+        Compoentes dentro de componentes: É injetado um componente injetado dentro do outro.
+      </p>
+
+      <div>
+        <my-form />
+      </div>
+    </div>
+
+    <script>
+      /*const field = Vue.component("Field", {
+        template: `<input type="text">`
+      });*/String
+      const field = { 
+        template: `<input type="text">`
+      };
+
+      const myButton = {
+        template: `<button>Botão</button>`
+      }
+
+      const myForm = {
+        template:`<div>
+                    <field />
+                    <my-button />
+                  </div>`,
+        components:{
+          field,
+          myButton
+        }
+      }
+
+      const app = new Vue({
+        el: "#app",
+        components:{
+          myForm          
+        }
+      });
+    </script>
+  </body>
+</html>

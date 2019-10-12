@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Componentes Multiplos</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <a href="/">Voltar</a>
+
+      <p>
+        Slots nomeados: São utilizadaos para ter a posibilidade de colocar mais
+        de um slot dentro do comonente.
+      </p>
+
+      <div>
+        <my-form>
+          <button>Botão que foi injetado pleo slot</button>
+            <template v-slot:other>
+              <button> Botão que foi injetado slot nomeado</button>
+            </template>
+            <template v-slot:plus>
+                <button> Mais um Botão que foi injetado slot nomeado</button>
+              </template>
+          </template>
+        </my-form>
+      </div>
+    </div>
+
+    <script>
+      const myForm = {
+        template: `<div>
+                    <p>Slot padrao</p>
+                    <slot />
+                    <p>Outro slot(nomeado)</p>
+                    <slot name="other" />
+                    <p>Mais um slot(nomeado)</p>
+                    <slot name="plus" />
+                  </div>
+        `
+      };
+
+      const otherComponent = {
+        template: `<div>
+                    <p>Aqui é Outro componente</p>
+                    <slot />
+                  </div>
+        `
+      };
+
+      const app = new Vue({
+        el: "#app",
+        components: {
+          myForm,
+          otherComponent
+        }
+      });
+    </script>
+  </body>
+</html>

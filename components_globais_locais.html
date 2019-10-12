@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Componentes Multiplos</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <a href="/">Voltar</a>
+
+      <p>
+        Compoentes Global: O compoente Global é a forma que veio se implemento nos demais arquivos acima deste. Um exemplo esta comentado neste código.
+        Componente Local: Ele é criado em forma de variável e importado na nossa aplicação.
+      </p>
+
+      <div>
+        <field />
+      </div>
+    </div>
+
+    <script>
+      /*const field = Vue.component("Field", {
+        template: `<input type="text">`
+      });*/String
+      const field = { 
+        template: `<input type="text">`
+      };
+
+      const app = new Vue({
+        el: "#app",
+        components:{
+          field
+          //ou chamar assim: 'field':field. Isso ;é por que a variavel field tem o mesmo nome
+        }
+      });
+    </script>
+  </body>
+</html>
