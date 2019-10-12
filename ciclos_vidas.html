@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Componentes Multiplos</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <a href="/">Voltar</a>
+
+      <p>
+        Life Cycle Hooks: Muityo similar ao react. 
+        Whatch: Parace o hooks, qualdo algo é alterado ele aciona.
+      </p>
+
+      <div>
+        <life-cycle :text="text" />
+      </div>
+    </div>
+
+    <script>
+      const lifeCycle ={
+        template:`<div>
+                    <p>{{message}}</p>
+                    <p>{{text}}</p>
+                  </div>`,
+        props:{
+          text:{type:String, default:''}
+        },
+        data(){
+          return {
+            message:''
+          };
+        },
+        created(){
+          this.message = 'Componente nasceu'
+        },
+        updated(){
+          this.message = "Componente foi alterado"
+        }
+      }
+
+      const app = new Vue({
+        el: "#app",
+        components: {
+          lifeCycle
+        },
+        data(){
+          return{
+            text: 'Texto qualquer'
+          }
+        },
+        created(){
+          setTimeout(() => {
+              this.text = "texto mudou"
+          }, 2000);
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Componentes Multiplos</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <a href="/">Voltar</a>
+
+      <p>
+        diretivas personalizadas: Função próprias nossas a partir de diretivas
+        aciona.
+      </p>
+
+      <div>
+        <input type="text" v-focus="delay" />
+      </div>
+    </div>
+
+    <script>
+      const focus = {
+        inserted: function(elem, binding) {
+          setTimeout(() => {
+            elem.focus();
+          }, binding.value);
+        }
+      };
+
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            delay: 2000
+          };
+        },
+        directives: {
+          focus
+        }
+      });
+    </script>
+  </body>
+</html>
